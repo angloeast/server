@@ -41,12 +41,7 @@ app.use('/', indexRouter);
 //     optionsSuccessStatus: 200,
 //   })
 // );
-app.use(
-  cors({
-    origin: 'https://issues2022.herokuapp.com',
-    optionsSuccessStatus: 200,
-  })
-);
+app.use(cors());
 
 app.use('/api', issuesApiRouter);
 
