@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const issuesApiRouter = require('./routes/api/issues');
@@ -21,7 +22,7 @@ app.use('/', indexRouter);
 
 app.use(
   cors({
-    origin: 'http://localhost:3001',
+    origin: process.env.FRONT_END_URL,
     optionsSuccessStatus: 200,
   })
 );
