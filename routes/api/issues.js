@@ -11,14 +11,14 @@ const dummyResponseGenerator = () => {
       imageUri: 'https://picsum.photos/400/180',
       title: 'string',
       issueNumber: i,
-      issueDate: new Date(),
+      issueDate: new Date().getTime(),
     });
   }
   return data;
 };
 
 router.get('/issues', function (req, res, next) {
-  res.json({ data: dummyResponseGenerator() });
+  res.json(dummyResponseGenerator());
 });
 
 router.get('/issues/:id', function (req, res, next) {
