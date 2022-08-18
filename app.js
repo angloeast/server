@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(helmet.contentSecurityPolicy());
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet.crossOriginOpenerPolicy());
-// app.use(helmet.crossOriginResourcePolicy());
+app.use(helmet.crossOriginResourcePolicy());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
@@ -35,12 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-// app.use(
-//   cors({
-//     origin: process.env.FRONT_END_URL,
-//     optionsSuccessStatus: 200,
-//   })
-// );
 app.use(cors());
 
 app.use('/api', issuesApiRouter);
