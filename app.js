@@ -20,12 +20,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+// app.use(
+//   cors({
+//     origin: process.env.FRONT_END_URL,
+//     optionsSuccessStatus: 200,
+//   })
+// );
 app.use(
   cors({
-    origin: process.env.FRONT_END_URL,
+    origin: 'https://issues2022.herokuapp.com',
     optionsSuccessStatus: 200,
   })
 );
+
 app.use('/api', issuesApiRouter);
 
 // catch 404 and forward to error handler
