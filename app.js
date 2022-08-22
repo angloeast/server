@@ -7,7 +7,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
+
 const issuesApiRouter = require('./routes/api/issues');
+const searchApiRouter = require('./routes/api/search');
 
 const app = express();
 
@@ -18,7 +20,9 @@ app.use(cookieParser());
 app.use(helmet.contentSecurityPolicy());
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet.crossOriginOpenerPolicy());
-app.use(helmet.crossOriginResourcePolicy());
+app.use(helmet.crossOriginResourcePolicy({
+  policy: 'cross-origin'
+}));
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
@@ -38,6 +42,7 @@ app.use('/', indexRouter);
 app.use(cors());
 
 app.use('/api', issuesApiRouter);
+app.use('/api', searchApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
